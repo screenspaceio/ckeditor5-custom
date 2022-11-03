@@ -42,9 +42,14 @@ class FontColorPicker extends Plugin {
 				withText: true
 			} );
 
+			dropdown.panelView.class = "font-color-container"
+			
+
 			dropdown.render();
 
-			dropdown.panelView.element.append(document.querySelector( '#font-color-selector' ));
+			dropdown.buttonView.on( 'execute', () => {
+				dropdown.panelView.element.append(document.querySelector( '#font-color-selector' ));
+            } );
 			
 			return dropdown;
         } );
