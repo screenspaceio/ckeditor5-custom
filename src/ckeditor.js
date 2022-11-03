@@ -49,11 +49,11 @@ class FontColorPicker extends Plugin {
 
 			dropdown.buttonView.on( 'execute', () => {
 
-				window.dispatchEvent(new CustomEvent('colorpicker', { bubbles: true, detail: { text: 'test' } }))
-
+				window.postMessage('colorpicker');
 				setTimeout(()=>{
 					dropdown.panelView.element.appendChild(document.querySelector( '#font-color-selector' ));
-				},1000);
+				},100);
+				
             } );
 			
 			return dropdown;
