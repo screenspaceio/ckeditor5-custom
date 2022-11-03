@@ -15,13 +15,39 @@ import Link from '@ckeditor/ckeditor5-link/src/link.js';
 import List from '@ckeditor/ckeditor5-list/src/list.js';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph.js';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline.js';
+
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
+import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
+import Model from '@ckeditor/ckeditor5-ui/src/model';
+import Collection from '@ckeditor/ckeditor5-utils/src/collection';
+import { addListToDropdown, createDropdown } from '@ckeditor/ckeditor5-ui/src/dropdown/utils';
+
+
 
 class Editor extends BalloonEditor {}
 
-class Timestamp extends Plugin {
+class FontColorPicker extends Plugin {
     init() {
-        console.log( 'Timestamp was initialized.' );
+        const editor = this.editor;
+
+        // The button must be registered among the UI components of the editor
+        // to be displayed in the toolbar.
+        editor.ui.componentFactory.add( 'fontColorPicker', () => {
+            // The button will be an instance of ButtonView.
+			const dropdown = createDropdown();
+
+            // Configure dropdown's button properties:
+			dropdown.buttonView.set( {
+				label: 'Font Color',
+				withText: true
+			} );
+
+			dropdown.render();
+
+			dropdown.panelView.element.append(document.querySelector( '#font-color-selector' ));
+			
+			return dropdown;
+        } );
     }
 }
 
@@ -40,7 +66,7 @@ Editor.builtinPlugins = [
 	Paragraph,
 	Underline,
 	Plugin,
-	Timestamp
+	FontColorPicker
 ];
 
 // Editor configuration.
@@ -51,6 +77,7 @@ Editor.defaultConfig = {
 			'|',
 			'fontSize',
 			'fontColor',
+			'fontColorPicker',
 			'|',
 			'bold',
 			'italic',
@@ -63,8 +90,7 @@ Editor.defaultConfig = {
 			'alignment',
 			'blockQuote'
 		]
-	},
-	language: 'en'
+	}
 };
 
 export default Editor;
