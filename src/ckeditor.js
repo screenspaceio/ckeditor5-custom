@@ -15,8 +15,15 @@ import Link from '@ckeditor/ckeditor5-link/src/link.js';
 import List from '@ckeditor/ckeditor5-list/src/list.js';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph.js';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline.js';
+import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 
 class Editor extends BalloonEditor {}
+
+class Timestamp extends Plugin {
+    init() {
+        console.log( 'Timestamp was initialized.' );
+    }
+}
 
 // Plugins to include in the build.
 Editor.builtinPlugins = [
@@ -31,7 +38,9 @@ Editor.builtinPlugins = [
 	Link,
 	List,
 	Paragraph,
-	Underline
+	Underline,
+	Plugin,
+	Timestamp
 ];
 
 // Editor configuration.
