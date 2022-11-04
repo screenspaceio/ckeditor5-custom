@@ -47,18 +47,17 @@ class FontColorPicker extends Plugin {
 			dropdown.buttonView.on( 'execute', () => {
 
 				// CREATE ELEMENT
-				const fontColorLoc = document.createElement('div')
-				fontColorLoc.id = 'font-color-location';
-				fontColorLoc.innerHTML = 'test';
-				dropdown.panelView.element.append(fontColorLoc);
-				// document.body.appendChild( dropdown.panelView.element);
+				// const fontColorLoc = document.createElement('div')
+				// fontColorLoc.id = 'font-color-location';
+				// dropdown.panelView.element.append(fontColorLoc);
 
 				// GET LOCATION
-				var rect = fontColorLoc.getBoundingClientRect();
-				console.log(rect.top, rect.right, rect.bottom, rect.left);
+				const container = document.getElementsByClassName('ck-balloon-panel')[0];
+				const locX = container.style.left;
+				const locY = container.style.top;
 
 				// SEND THE DATA
-				window.postMessage('colorpicker|'+rect.top+'|'+rect.left);
+				window.postMessage('colorpicker|'+locX+'|'+locY);
 				
             } );
 			
