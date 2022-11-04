@@ -52,12 +52,13 @@ class FontColorPicker extends Plugin {
 				// dropdown.panelView.element.append(fontColorLoc);
 
 				// GET LOCATION
-				const container = document.getElementsByClassName('ck-balloon-panel')[0];
-				const locX = container.style.left;
-				const locY = container.style.top;
+				// const container = document.getElementsByClassName('ck-balloon-panel')[0];
+				// const locX = container.style.left;
+				// const locY = container.style.top;
+				// console.log('colorpicker|'+locX+'|'+locY)
 
 				// SEND THE DATA
-				window.postMessage('colorpicker|'+locX+'|'+locY);
+				window.postMessage('colorpicker');
 				
             } );
 			
