@@ -49,10 +49,17 @@ class FontColorPicker extends Plugin {
 
 			dropdown.buttonView.on( 'execute', () => {
 
-				window.postMessage('colorpicker');
-				setTimeout(()=>{
-					dropdown.panelView.element.appendChild(document.querySelector( '#font-color-selector' ));
-				},100);
+				// CREATE ELEMENT
+				const fontColorLoc = document.createElement('div')
+				fontColorLoc.id = 'font-color-location'
+				dropdown.panelView.element.appendChild(fontColorLoc);
+
+				// GET LOCATION
+				var rect = fontColorLoc.getBoundingClientRect();
+				console.log(rect.top, rect.right, rect.bottom, rect.left);
+
+				// SEND THE DATA
+				window.postMessage('colorpicker|'+rect.top+'|'+rect.left);
 				
             } );
 			
