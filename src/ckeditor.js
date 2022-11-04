@@ -15,6 +15,7 @@ import Link from '@ckeditor/ckeditor5-link/src/link.js';
 import List from '@ckeditor/ckeditor5-list/src/list.js';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph.js';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline.js';
+import customIcon from './custom-icon.svg';
 
 import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
 import ButtonView from '@ckeditor/ckeditor5-ui/src/button/buttonview';
@@ -39,7 +40,9 @@ class FontColorPicker extends Plugin {
             // Configure dropdown's button properties:
 			dropdown.buttonView.set( {
 				label: 'Font Color',
-				withText: true
+				tooltip: true,
+				withText: false,
+				icon: customIcon
 			} );
 
 			dropdown.render();
