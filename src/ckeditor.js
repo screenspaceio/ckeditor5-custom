@@ -49,8 +49,9 @@ class FontColorPicker extends Plugin {
 				// CREATE ELEMENT
 				const fontColorLoc = document.createElement('div')
 				fontColorLoc.id = 'font-color-location';
+				fontColorLoc.innerHTML = 'test';
 				dropdown.panelView.element.append(fontColorLoc);
-				document.body.appendChild( dropdown.panelView.element);
+				// document.body.appendChild( dropdown.panelView.element);
 
 				// GET LOCATION
 				var rect = fontColorLoc.getBoundingClientRect();
